@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkinson's Disease Prediction</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('static/2556759.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .alert {
+            font-size: 1.2em;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Parkinson's Disease Prediction</h1>
+        <form action="/predict" method="post" class="mt-4">
+            <h4>Input Features</h4>
+            <div class="form-group">
+                <label for="MDVP_Fo">MDVP:Fo (Hz)</label>
+                <input type="text" class="form-control" id="MDVP_Fo" name="MDVP_Fo" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_Fhi">MDVP:Fhi (Hz)</label>
+                <input type="text" class="form-control" id="MDVP_Fhi" name="MDVP_Fhi" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_Flo">MDVP:Flo (Hz)</label>
+                <input type="text" class="form-control" id="MDVP_Flo" name="MDVP_Flo" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_Jitter">MDVP:Jitter (%)</label>
+                <input type="text" class="form-control" id="MDVP_Jitter" name="MDVP_Jitter" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_Jitter_Abs">MDVP:Jitter (Abs)</label>
+                <input type="text" class="form-control" id="MDVP_Jitter_Abs" name="MDVP_Jitter_Abs" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_RAP">MDVP:RAP</label>
+                <input type="text" class="form-control" id="MDVP_RAP" name="MDVP_RAP" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_PPQ">MDVP:PPQ</label>
+                <input type="text" class="form-control" id="MDVP_PPQ" name="MDVP_PPQ" required>
+            </div>
+            <div class="form-group">
+                <label for="Jitter_DDP">Jitter:DDP</label>
+                <input type="text" class="form-control" id="Jitter_DDP" name="Jitter_DDP" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_Shimmer">MDVP:Shimmer</label>
+                <input type="text" class="form-control" id="MDVP_Shimmer" name="MDVP_Shimmer" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_Shimmer_dB">MDVP:Shimmer (dB)</label>
+                <input type="text" class="form-control" id="MDVP_Shimmer_dB" name="MDVP_Shimmer_dB" required>
+            </div>
+            <div class="form-group">
+                <label for="Shimmer_APQ3">Shimmer:APQ3</label>
+                <input type="text" class="form-control" id="Shimmer_APQ3" name="Shimmer_APQ3" required>
+            </div>
+            <div class="form-group">
+                <label for="Shimmer_APQ5">Shimmer:APQ5</label>
+                <input type="text" class="form-control" id="Shimmer_APQ5" name="Shimmer_APQ5" required>
+            </div>
+            <div class="form-group">
+                <label for="MDVP_APQ">MDVP:APQ</label>
+                <input type="text" class="form-control" id="MDVP_APQ" name="MDVP_APQ" required>
+            </div>
+            <div class="form-group">
+                <label for="Shimmer_DDA">Shimmer:DDA</label>
+                <input type="text" class="form-control" id="Shimmer_DDA" name="Shimmer_DDA" required>
+            </div>
+            <div class="form-group">
+                <label for="NHR">NHR</label>
+                <input type="text" class="form-control" id="NHR" name="NHR" required>
+            </div>
+            <div class="form-group">
+                <label for="HNR">HNR</label>
+                <input type="text" class="form-control" id="HNR" name="HNR" required>
+            </div>
+            <div class="form-group">
+                <label for="RPDE">RPDE</label>
+                <input type="text" class="form-control" id="RPDE" name="RPDE" required>
+            </div>
+            <div class="form-group">
+                <label for="DFA">DFA</label>
+                <input type="text" class="form-control" id="DFA" name="DFA" required>
+            </div>
+            <div class="form-group">
+                <label for="spread1">spread1</label>
+                <input type="text" class="form-control" id="spread1" name="spread1" required>
+            </div>
+            <div class="form-group">
+                <label for="spread2">spread2</label>
+                <input type="text" class="form-control" id="spread2" name="spread2" required>
+            </div>
+            <div class="form-group">
+                <label for="D2">D2</label>
+                <input type="text" class="form-control" id="D2" name="D2" required>
+            </div>
+            <div class="form-group">
+                <label for="PPE">PPE</label>
+                <input type="text" class="form-control" id="PPE" name="PPE" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+        {% if result %}
+        <div id="result" class="mt-4 alert alert-info text-center">
+            {{ result }}
+        </div>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2023 Parkinson's Disease Prediction. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
