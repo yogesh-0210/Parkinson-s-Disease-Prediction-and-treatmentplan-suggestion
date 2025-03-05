@@ -1,5 +1,4 @@
 Flask==2.0.1
-python==3.8
 nltk==3.6.3
 numpy==1.21.2
 joblib==1.0.1
