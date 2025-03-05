@@ -6,6 +6,8 @@ import nltk
 import random
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
+from urllib.parse import quote as url_quote
+
 
 # Download necessary NLTK resources
 nltk.download('punkt')
